@@ -10,4 +10,9 @@ class Api extends Controller
    function GetList(){
         return student::all();
     }
+
+   function list(Request $request){
+        return $request->input();
+    }
+
 }

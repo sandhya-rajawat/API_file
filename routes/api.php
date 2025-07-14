@@ -9,4 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get("firstApi",[Api::class,'GetList']);
+Route::Get("SecApi",[Api::class,'list']);
 
