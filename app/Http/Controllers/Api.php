@@ -15,4 +15,20 @@ class Api extends Controller
         return $request->input();
     }
 
+    // data insert....................
+    function DataInsert(Request $rst){
+       $model=new student();
+       $model->name=$rst->name;
+       $model->email=$rst->email;
+     
+       $model->city=$rst->city;
+         $model->Contact=$rst->phone;
+       if($model->save()){
+        return "data insert";
+       }else{
+        return"data is faild";
+       }
+
+    }
+
 }

@@ -11,3 +11,10 @@ Route::get('/user', function (Request $request) {
 Route::get("firstApi",[Api::class,'GetList']);
 Route::Get("SecApi",[Api::class,'list']);
 
+// Route::view('form','form');
+
+// data insert
+Route::Post("Data-insert",[Api::class,'DataInsert']);
+
+
+
