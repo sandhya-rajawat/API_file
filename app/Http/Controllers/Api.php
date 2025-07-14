@@ -47,4 +47,17 @@ class Api extends Controller
     }
 }
 
+// delete data
+function deleteData($id){
+  $del=student::destroy($id);
+  if($del){
+    return "Your Data is delete";
+
+  }else{
+    return "Your somthing code error";
+  }
+}
+
+
+
 }
