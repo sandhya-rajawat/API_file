@@ -20,4 +20,7 @@ Route::Put("Update",[Api::class,'UpdateData']);
 Route::delete("Delete/{id}",[Api::class,'deleteData']);
 
 
+Route::get('serchItem/{name}',[Api::class,'searchData']);
+
+
 

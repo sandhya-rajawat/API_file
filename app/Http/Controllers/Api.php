@@ -31,6 +31,7 @@ class Api extends Controller
     //         return "data is faild";
     //     }
     // }
+    // update
     function UpdateData(Request $rst){
     $model = student::find($rst->id);
    
@@ -58,6 +59,14 @@ function deleteData($id){
   }
 }
 
-
+// serch
+function searchData($name){
+    $serch=student::where('name','like',"%$name%")->get();
+    if($serch){
+        return "This is your data=>  $serch";
+    }else{
+        return "Somthing is wrong";
+    }
+}
 
 }
