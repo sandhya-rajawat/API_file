@@ -15,6 +15,7 @@ Route::Get("SecApi",[Api::class,'list']);
 
 // data insert
 Route::Post("Data-insert",[Api::class,'DataInsert']);
+Route::Put("Update",[Api::class,'UpdateData']);
 
 
 

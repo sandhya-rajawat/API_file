@@ -7,28 +7,44 @@ use App\Models\student;
 
 class Api extends Controller
 {
-   function GetList(){
+    function GetList()
+    {
         return student::all();
     }
 
-   function list(Request $request){
+    function list(Request $request)
+    {
         return $request->input();
     }
 
     // data insert....................
-    function DataInsert(Request $rst){
-       $model=new student();
-       $model->name=$rst->name;
-       $model->email=$rst->email;
-     
-       $model->city=$rst->city;
-         $model->Contact=$rst->phone;
-       if($model->save()){
-        return "data insert";
-       }else{
-        return"data is faild";
-       }
+    // function DataInsert(Request $rst)
+    // {
+    //     $model = new student();
+    //     $model->name = $rst->name;
+    //     $model->email = $rst->email;
+    //     $model->city = $rst->city;
+    //     $model->Contact = $rst->phone;
+    //     if ($model->save()) {
+    //         return "data insert";
+    //     } else {
+    //         return "data is faild";
+    //     }
+    // }
+    function UpdateData(Request $rst){
+    $model = student::find($rst->id);
+   
 
+    $model->name = $rst->input('name');
+    $model->email = $rst->input('email');
+    $model->city = $rst->input('city');
+    $model->contact = $rst->input('contact');
+
+    if ($model->save()) {
+        return "data updated";
+    } else {
+        return "update failed";
     }
+}
 
 }
