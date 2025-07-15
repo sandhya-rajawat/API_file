@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\student;
 
 class Api extends Controller
@@ -18,19 +19,28 @@ class Api extends Controller
     }
 
     // data insert....................
-    // function DataInsert(Request $rst)
-    // {
-    //     $model = new student();
-    //     $model->name = $rst->name;
-    //     $model->email = $rst->email;
-    //     $model->city = $rst->city;
-    //     $model->Contact = $rst->phone;
-    //     if ($model->save()) {
-    //         return "data insert";
-    //     } else {
-    //         return "data is faild";
-    //     }
-    // }
+    function DataInsert(Request $rst)
+    {
+        $rules=array('name'=>'required|min:2|max:10');
+        $validation=Validator::make($rst->all(),$rules);
+        if($validation->fails()){
+            return $validation->errors();
+        }
+        else{
+             $model = new student();
+        $model->name = $rst->name;
+        $model->email = $rst->email;
+        $model->city = $rst->city;
+        $model->Contact = $rst->phone;
+        if ($model->save()) {
+            return "data insert";
+        } else {
+            return "data is faild";
+        }
+
+        }
+       
+    }
     // update
     function UpdateData(Request $rst){
     $model = student::find($rst->id);
@@ -68,5 +78,7 @@ function searchData($name){
         return "Somthing is wrong";
     }
 }
+// validation....................................
+
 
 }
